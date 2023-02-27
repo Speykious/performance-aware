@@ -1,11 +1,18 @@
 fn main() {
     println!("{{ \"pairs\": [");
     let (start, end) = (-100.0, 100.0);
-    for _ in 0..10_000_000 {
+
+    for _ in 0..9_999_999 {
         let (x0, y0) = rand_point(start, end);
         let (x1, y1) = rand_point(start, end);
         println!("  {{ \"x0\": {x0}, \"y0\": {y0}, \"x1\": {x1}, \"y1\": {y1} }},");
     }
+
+    // last line should not have a trailing comma
+    let (x0, y0) = rand_point(start, end);
+    let (x1, y1) = rand_point(start, end);
+    println!("  {{ \"x0\": {x0}, \"y0\": {y0}, \"x1\": {x1}, \"y1\": {y1} }}");
+
     println!("] }}");
 }
 
